@@ -1,0 +1,20 @@
+PODS:
+  - ObjectMapper (4.4.2)
+  - SwiftyJSON (5.0.2)
+
+DEPENDENCIES:
+  - ObjectMapper
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - ObjectMapper
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  ObjectMapper: e6e4d91ff7f2861df7aecc536c92d8363f4c9677
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
+
+PODFILE CHECKSUM: 2c9a915925b5a149e7ca56d59f098b22435864f4
+
+COCOAPODS: 1.15.2
