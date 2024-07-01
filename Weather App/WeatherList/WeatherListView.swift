@@ -84,14 +84,12 @@ struct WeatherListView: View {
                 }
             }
             
-            
         }
         .tint(.blue)
         .onAppear {
             setupNavigationBarAppearance()
         }
     }
-    
 }
 
 

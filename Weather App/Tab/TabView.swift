@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @ObservedObject var viewModel = LoginViewModel()
     var body: some View {
         TabView {
             WeatherListView()
@@ -15,7 +17,7 @@ struct ContentView: View {
                     Image(systemName: "cloud.sun")
                     Text("Weather")
                 }
-            ProfileView()
+            ProfileView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")

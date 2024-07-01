@@ -8,15 +8,21 @@
 import Foundation
 import SwiftUI
 
+
 struct OnOpenView: View {
     @State private var showSplashScreen = true
+    @State private var isSignedIn = UserDefaults.standard.bool(forKey: "isSignedIn")
     
     var body: some View {
         Group {
             if showSplashScreen {
                 SplashView()
             } else {
-                LoginView()
+                if isSignedIn {
+                    WeatherListView()
+                } else {
+                    LoginView()
+                }
             }
         }
         .onAppear {

@@ -10,6 +10,8 @@ import SwiftUI
 struct ProfileView: View {
     @State private var email: String = "soumikb@example.com"
     @State private var name: String = "Soumik"
+    @ObservedObject var viewModel = LoginViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -42,6 +44,8 @@ struct ProfileView: View {
             // Logout Button
             Button(action: {
                 print("Logout Button tapped!")
+                logout()
+                
             }) {
                 Text("Logout")
                     .font(.headline)
@@ -56,10 +60,9 @@ struct ProfileView: View {
         .padding()
         .background(Color(UIColor.systemBackground))
     }
-}
-
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
+    func logout() {
+        UserDefaults.standard.set(false, forKey: "isSignedIn")
+        viewModel.isLoggedIn = false
+        presentationMode.wrappedValue.dismiss()
     }
 }
