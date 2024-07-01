@@ -14,7 +14,6 @@ class CitySearchViewModel: ObservableObject {
     @Published var searchResults: [AutocompleteResult] = []
     private var cancellables: Set<AnyCancellable> = []
     
-    //    var onSearchResultsUpdated: (([AutocompleteResult]) -> Void)?
     
     func searchCities(query: String) {
         
@@ -40,7 +39,7 @@ class CitySearchViewModel: ObservableObject {
                         print("Parsed results: \(self!.searchResults)")
                     }
                 }
-
+                
             } catch {
                 print("Decoding error: \(error)")
             }

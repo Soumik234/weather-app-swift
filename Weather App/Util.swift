@@ -15,8 +15,8 @@ struct UrlConstants{
 }
 
 struct Constants {
-    static let apiKey = "Iww1szXhhaoTYAEapGeXGVqheAtOopAB"
-    static let apiKey0 = "Au4x0evGwrA9NK7JzriOm9eO0DPTAfvI"
+    static let apiKey0 = "Iww1szXhhaoTYAEapGeXGVqheAtOopAB"
+    static let apiKey = "Au4x0evGwrA9NK7JzriOm9eO0DPTAfvI"
     static let apiKey1 = "ljdI1OGrX3hQCDNbyLtVxoCvGLmZZLfl"
     static let apiKey2 = "gGXLBt6nGdXxydesTMVcy7kkYzWM84OW"
     static let apiKey3 = "eHmUgdmPFbpIwv1EbzqJYNRu4NYu2mNj"

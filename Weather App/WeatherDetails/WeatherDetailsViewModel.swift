@@ -8,13 +8,15 @@ class WeatherDetailViewModel: ObservableObject {
     @Published var hourlyForecasts: [HourlyForecast] = []
     private var cancellable: AnyCancellable?
     private let networkUtility = NetworkUtility()
+    var cityKey: String
     
-    init(weather: WeatherData) {
+    init(weather: WeatherData, cityKey: String) {
         self.weather = weather
+        self.cityKey = cityKey
     }
     
     func fetchHourlyForecast() {
-        let baseURL = UrlConstants.hourlyURL + Constants.kolkata
+        let baseURL = UrlConstants.hourlyURL + cityKey
         let parameters = [
             "apikey": Constants.apiKey,
             "details": "true",

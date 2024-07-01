@@ -14,6 +14,7 @@ struct WeatherData: Identifiable, Mappable, Hashable{
     let id: String = UUID().uuidString
     var headline: Headline?
     var dailyForecasts: [DailyForecast]?
+    var key: String?
     var cityName: String?
     
     static func == (lhs: WeatherData, rhs: WeatherData) -> Bool {
@@ -136,3 +137,7 @@ struct AutocompleteResult: Identifiable, Mappable {
     }
 }
 
+struct CityInfo {
+    let key: String
+    let name: String
+}

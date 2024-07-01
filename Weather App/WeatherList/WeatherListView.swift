@@ -25,10 +25,13 @@ struct WeatherListView: View {
             }
             .navigationBarTitle("Weather Forecast")
             .navigationDestination(for: WeatherData.self) { weather in
-                WeatherDetailView(viewModel: WeatherDetailViewModel(weather: weather))
+                if let cityKeyIndex = viewModel.cityNames.firstIndex(of: weather.cityName!) {
+                    let cityKey = viewModel.locationKeys[cityKeyIndex]
+                    WeatherDetailView(viewModel: WeatherDetailViewModel(weather: weather, cityKey: cityKey))
+                }
             }
             .navigationDestination(isPresented: $isShowingCitySearchView) {
-                CitySearchView(autoComplete: viewModel.createEmptyAutocompleteResult())
+                CitySearchView(autoComplete: viewModel.createEmptyAutocompleteResult(), listVm: viewModel)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -42,9 +45,6 @@ struct WeatherListView: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            viewModel.weatherDailyForecast()
         }
     }
 }

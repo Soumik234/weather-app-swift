@@ -108,8 +108,8 @@
 				E95AA37B2C297D3600BA5779 /* Item.swift */,
 				E991BDE92C2A7E5D000143F2 /* WeatherVO.swift */,
 				E95AA3912C298CF800BA5779 /* Util.swift */,
-				E95AA3932C298D3C00BA5779 /* NetworkUtility.swift */,
 				E95AA37D2C297D3B00BA5779 /* Assets.xcassets */,
+				E95AA3932C298D3C00BA5779 /* NetworkUtility.swift */,
 				E95AA37F2C297D3B00BA5779 /* Preview Content */,
 			);
 			path = "Weather App";
