@@ -62,7 +62,7 @@ struct LoginView: View {
                 .padding(.top,50)
                 Spacer()
                     .fullScreenCover(isPresented: $viewModel.isLoggedIn) {
-                        WeatherListView()
+                        ContentView()
                     }
             }
         }

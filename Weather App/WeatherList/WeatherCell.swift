@@ -23,13 +23,14 @@ struct WeatherCell: View {
                 .foregroundColor(.primary)
                 .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .center)
             
             HStack(spacing: 20) {
+                temperatureView(label: "Current", value:calculateAverageTemperature(), color: .blue)
                 Spacer()
                 temperatureView(label: "Min", value: weather.dailyForecasts?.first?.temperature?.minimum?.value, color: .blue)
                 Spacer()
                 temperatureView(label: "Max", value: weather.dailyForecasts?.first?.temperature?.maximum?.value, color: .red)
-                Spacer()
             }
         }
         .padding()
@@ -46,9 +47,15 @@ struct WeatherCell: View {
                 .foregroundColor(.secondary)
             
             Text("\(value ?? 0)°C")
-                .font(.title)
-                .fontWeight(.bold)
+                .font(.system(size: 20, weight: .bold))
                 .foregroundColor(color)
         }
+    }
+    private func calculateAverageTemperature() -> Int {
+        guard let minTemp = weather.dailyForecasts?.first?.temperature?.minimum?.value,
+              let maxTemp = weather.dailyForecasts?.first?.temperature?.maximum?.value else {
+            return 0
+        }
+        return (minTemp + maxTemp) / 2
     }
 }

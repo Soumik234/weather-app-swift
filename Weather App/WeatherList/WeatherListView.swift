@@ -13,6 +13,18 @@ struct WeatherListView: View {
     @ObservedObject var viewModel = WeatherListViewModel()
     @State private var isShowingCitySearchView = false
     
+    func setupNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .blue
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         NavigationStack {
             if viewModel.weatherList.isEmpty {
@@ -39,6 +51,7 @@ struct WeatherListView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(UIColor.systemBackground))
             }
+        //else {}
             List {
                 ForEach(viewModel.weatherList) { weather in
                     NavigationLink(value: weather) {
@@ -70,10 +83,15 @@ struct WeatherListView: View {
                     }
                 }
             }
-            .background(Color.blue)
+            
             
         }
+        .tint(.blue)
+        .onAppear {
+            setupNavigationBarAppearance()
+        }
     }
+    
 }
 
 
