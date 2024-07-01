@@ -25,7 +25,7 @@ struct Weather_AppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            WeatherListView()
         }
         .modelContainer(sharedModelContainer)
     }

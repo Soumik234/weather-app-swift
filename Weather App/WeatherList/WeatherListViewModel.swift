@@ -22,12 +22,7 @@ class WeatherListViewModel: ObservableObject{
     let dailyURL = UrlConstants.dailyURL
     var locationKeys: [String] = []
     var cityNames: [String] = []
-    //    var cityNames = [
-    //        Constants.kolkata: "Kolkata",
-    //        Constants.banglore: "Bangalore",
-    //        Constants.pune: "Pune",
-    //        Constants.mumbai: "Mumbai"
-    //    ]
+
     let parameters = [
         "apikey": Constants.apiKey,
         "details": "False",
@@ -44,7 +39,6 @@ class WeatherListViewModel: ObservableObject{
         locationKeys.append(cityInfo.key)
         cityNames.append(cityInfo.name)
         weatherDailyForecast(cityInfo)
-        
     }
     
     func deleteItems(at offsets: IndexSet) {

@@ -15,6 +15,30 @@ struct WeatherListView: View {
     
     var body: some View {
         NavigationStack {
+            if viewModel.weatherList.isEmpty {
+                VStack {
+                    Text("No cities added yet")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                    
+                    Text("Tap the '+' button to add a city")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                        .padding(.top, 8)
+                    
+                    Button(action: {
+                        isShowingCitySearchView = true
+                    }) {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.blue)
+                    }
+                    .padding(.top, 20)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(UIColor.systemBackground))
+            }
             List {
                 ForEach(viewModel.weatherList) { weather in
                     NavigationLink(value: weather) {
@@ -30,6 +54,7 @@ struct WeatherListView: View {
                     WeatherDetailView(viewModel: WeatherDetailViewModel(weather: weather, cityKey: cityKey))
                 }
             }
+            
             .navigationDestination(isPresented: $isShowingCitySearchView) {
                 CitySearchView(autoComplete: viewModel.createEmptyAutocompleteResult(), listVm: viewModel)
             }
@@ -45,6 +70,8 @@ struct WeatherListView: View {
                     }
                 }
             }
+            .background(Color.blue)
+            
         }
     }
 }
