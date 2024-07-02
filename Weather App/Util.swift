@@ -15,14 +15,10 @@ struct UrlConstants{
 }
 
 struct Constants {
-    static let apiKey0 = "Iww1szXhhaoTYAEapGeXGVqheAtOopAB"
+    static let apiKey = "Iww1szXhhaoTYAEapGeXGVqheAtOopAB"
     static let apiKey1 = "Au4x0evGwrA9NK7JzriOm9eO0DPTAfvI"
-    static let apiKey = "ljdI1OGrX3hQCDNbyLtVxoCvGLmZZLfl"
+    static let apiKey0 = "ljdI1OGrX3hQCDNbyLtVxoCvGLmZZLfl"
     static let apiKey2 = "gGXLBt6nGdXxydesTMVcy7kkYzWM84OW"
     static let apiKey3 = "eHmUgdmPFbpIwv1EbzqJYNRu4NYu2mNj"
-    static let kolkata = "206199"
-    static let banglore = "204108"
-    static let pune = "204848"
-    static let mumbai = "204842"
 }
 

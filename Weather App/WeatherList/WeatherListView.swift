@@ -13,18 +13,6 @@ struct WeatherListView: View {
     @ObservedObject var viewModel = WeatherListViewModel()
     @State private var isShowingCitySearchView = false
     
-    func setupNavigationBarAppearance() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .blue
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-    
     var body: some View {
         NavigationStack {
             if viewModel.weatherList.isEmpty {
@@ -71,9 +59,11 @@ struct WeatherListView: View {
             .navigationDestination(isPresented: $isShowingCitySearchView) {
                 CitySearchView(autoComplete: viewModel.createEmptyAutocompleteResult(), listVm: viewModel)
             }
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
+                        .foregroundColor(Color("iconColor"))
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -81,14 +71,13 @@ struct WeatherListView: View {
                     }) {
                         Image(systemName: "plus")
                     }
+                    .foregroundColor(Color("iconColor"))
                 }
             }
+
             
         }
-        .tint(.blue)
-        .onAppear {
-            setupNavigationBarAppearance()
-        }
+        
     }
 }
 
