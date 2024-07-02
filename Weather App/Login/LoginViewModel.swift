@@ -30,6 +30,8 @@ class LoginViewModel: ObservableObject {
             errorMessage = "Password cannot be empty"
         } else if username == "Soumik" && password == "soumik" {
             isLoggedIn = true
+            UserDefaults.standard.set(true, forKey: "isSignedIn")
+            UserDefaults.standard.synchronize()
         } else {
             isError = true
             errorMessage = "Invalid username or password"

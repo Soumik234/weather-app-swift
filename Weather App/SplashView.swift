@@ -11,8 +11,7 @@ import SwiftUI
 
 struct OnOpenView: View {
     @State private var showSplashScreen = true
-    @State private var isSignedIn = UserDefaults.standard.bool(forKey: "isSignedIn")
-    
+    private var isSignedIn = UserDefaults.standard.bool(forKey: "isSignedIn")
     var body: some View {
         Group {
             if showSplashScreen {
@@ -20,9 +19,11 @@ struct OnOpenView: View {
             } else {
                 if isSignedIn {
                     WeatherListView()
-                } else {
+                }
+                else {
                     LoginView()
                 }
+                
             }
         }
         .onAppear {
@@ -38,13 +39,13 @@ struct OnOpenView: View {
 struct SplashView: View {
     var body: some View {
         VStack {
-            Image(systemName: "bolt.circle.fill")
+            Image(systemName: "cloud.bolt")
                 .resizable()
                 .frame(width: 100, height: 100)
                 .foregroundColor(.yellow)
                 .padding()
             
-            Text("My App")
+            Text("Weather App")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
