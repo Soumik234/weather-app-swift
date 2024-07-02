@@ -18,7 +18,7 @@ struct OnOpenView: View {
                 SplashView()
             } else {
                 if isSignedIn {
-                    WeatherListView()
+                    ContentView()
                 }
                 else {
                     LoginView()

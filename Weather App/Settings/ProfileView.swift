@@ -73,7 +73,8 @@ struct ProfileView: View {
         .background(Color(UIColor.systemBackground))
     }
     func logout() {
-        UserDefaults.standard.set(false, forKey: "isSignedIn")
+        UserDefaults.standard.set(true, forKey: "isSignedIn")
+        UserDefaults.standard.synchronize()
         viewModel.isLoggedIn = false
         presentationMode.wrappedValue.dismiss()
     }
