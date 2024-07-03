@@ -1,12 +1,12 @@
 import SwiftUI
-
 struct ProfileView: View {
     @State private var email: String = "soumikb@example.com"
     @State private var name: String = "Soumik"
     @ObservedObject var viewModel = LoginViewModel()
+    @ObservedObject var vm = SplashViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var isDarkMode = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -63,6 +63,9 @@ struct ProfileView: View {
             .padding()
             .background(Color(UIColor.systemBackground))
             .environment(\.colorScheme, isDarkMode ? .dark : .light)
+            .onAppear {
+                setAppTheme(isDarkMode: isDarkMode)
+            }
         }
     }
     

@@ -22,7 +22,6 @@ struct ContentView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
     var body: some View {
-        
         TabView {
             WeatherListView()
                 .tabItem {
