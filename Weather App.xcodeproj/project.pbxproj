@@ -24,6 +24,7 @@
 		E96B0F522C357D3F00ADDCB5 /* CityInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B0F512C357D3F00ADDCB5 /* CityInfoView.swift */; };
 		E96B0F542C35883500ADDCB5 /* CityInfoVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B0F532C35883500ADDCB5 /* CityInfoVm.swift */; };
 		E96B0F562C3659B300ADDCB5 /* CityBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B0F552C3659B300ADDCB5 /* CityBoxView.swift */; };
+		E96B0F582C36640500ADDCB5 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B0F572C36640500ADDCB5 /* CurrentLocation.swift */; };
 		E991BDEA2C2A7E5D000143F2 /* WeatherVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991BDE92C2A7E5D000143F2 /* WeatherVO.swift */; };
 		E991BDEF2C2A87E8000143F2 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991BDEE2C2A87E8000143F2 /* WeatherDetailsView.swift */; };
 		E991BDF12C2A87F6000143F2 /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991BDF02C2A87F6000143F2 /* WeatherDetailsViewModel.swift */; };
@@ -57,6 +58,8 @@
 		E96B0F512C357D3F00ADDCB5 /* CityInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfoView.swift; sourceTree = "<group>"; };
 		E96B0F532C35883500ADDCB5 /* CityInfoVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfoVm.swift; sourceTree = "<group>"; };
 		E96B0F552C3659B300ADDCB5 /* CityBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBoxView.swift; sourceTree = "<group>"; };
+		E96B0F572C36640500ADDCB5 /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
+		E96B0F592C36C71400ADDCB5 /* Weather-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Weather-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E991BDE92C2A7E5D000143F2 /* WeatherVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVO.swift; sourceTree = "<group>"; };
 		E991BDEE2C2A87E8000143F2 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		E991BDF02C2A87F6000143F2 /* WeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		E95AA3762C297D3600BA5779 /* Weather App */ = {
 			isa = PBXGroup;
 			children = (
+				E96B0F592C36C71400ADDCB5 /* Weather-App-Info.plist */,
 				E96B0F502C357D2400ADDCB5 /* CityInfo */,
 				E9DA80C02C3502E9002DD2BC /* Splash */,
 				E91617DC2C32BC4A002ECE26 /* Profile */,
@@ -144,6 +148,7 @@
 				E95AA3932C298D3C00BA5779 /* NetworkUtility.swift */,
 				E95AA37F2C297D3B00BA5779 /* Preview Content */,
 				E9DEA3D42C35562200CC7D04 /* DataItem.swift */,
+				E96B0F572C36640500ADDCB5 /* CurrentLocation.swift */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				E95AA3962C2992B200BA5779 /* WeatherCell.swift in Sources */,
 				E9DA80C22C35030D002DD2BC /* SplashVM.swift in Sources */,
 				E95AA37C2C297D3600BA5779 /* Item.swift in Sources */,
+				E96B0F582C36640500ADDCB5 /* CurrentLocation.swift in Sources */,
 				E95AA3902C298C2400BA5779 /* WeatherListView.swift in Sources */,
 				E991BDEF2C2A87E8000143F2 /* WeatherDetailsView.swift in Sources */,
 				E991BDF82C2A8E07000143F2 /* CitySearchViewModel.swift in Sources */,
@@ -496,6 +502,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Weather-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -526,6 +533,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Weather-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

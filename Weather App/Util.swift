@@ -11,14 +11,14 @@ struct UrlConstants{
     static let dailyURL = forecastURL + "/daily/1day/"
     static let hourlyURL = forecastURL + "/hourly/12hour/"
     static let autocompleteURL = baseURL + "/locations/v1/cities/autocomplete"
-    static let topCitiesURL = baseURL + "/locations/v1/topcities/150"
+    static let topCitiesURL = baseURL + "/locations/v1/topciti/150"
 }
 
 struct Constants {
-    static let apiKey = "Iww1szXhhaoTYAEapGeXGVqheAtOopAB"
-    static let apiKey1 = "Au4x0evGwrA9NK7JzriOm9eO0DPTAfvI"
-    static let apiKey0 = "ljdI1OGrX3hQCDNbyLtVxoCvGLmZZLfl"
-    static let apiKey2 = "gGXLBt6nGdXxydesTMVcy7kkYzWM84OW"
-    static let apiKey3 = "eHmUgdmPFbpIwv1EbzqJYNRu4NYu2mNj"
+    static let apiKey1 = "Iww1szXhhaoTYAEapGeXGVqheAtOopAB"
+    static let apiKey0 = "Au4x0evGwrA9NK7JzriOm9eO0DPTAfvI"
+    static let apiKey2 = "ljdI1OGrX3hQCDNbyLtVxoCvGLmZZLfl"
+    static let apiKey3 = "gGXLBt6nGdXxydesTMVcy7kkYzWM84OW"
+    static let apiKey = "eHmUgdmPFbpIwv1EbzqJYNRu4NYu2mNj"
 }
 

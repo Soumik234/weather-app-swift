@@ -30,16 +30,15 @@ struct ContentView: View {
                     Image(systemName: "cloud.sun")
                     Text("Weather")
                 }
-            
-            ProfileView(viewModel: vm)
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Profile")
-                }
             CityInfoView()
                 .tabItem{
                     Image(systemName: "book")
                     Text("CityInfo")
+                }
+            ProfileView(viewModel: vm)
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Profile")
                 }
             
         }.tint(.blue)

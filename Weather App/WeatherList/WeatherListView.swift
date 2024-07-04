@@ -8,13 +8,10 @@
 import Foundation
 import SwiftUI
 import ObjectMapper
-import SwiftData
 
 struct WeatherListView: View {
-    
     @ObservedObject var viewModel = WeatherListViewModel()
     @State private var isShowingCitySearchView = false
-    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationStack {

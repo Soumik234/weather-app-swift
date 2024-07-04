@@ -6,27 +6,62 @@
 //
 
 
-import SwiftUI
+import Foundation
 import SwiftData
 
 @Model
-class Weather {
+class Weather: Identifiable, ObservableObject {
     @Attribute(.unique) var id: String
-    var cityName: String
-    var headlineText: String
-    var currentTemperature: Int
-    var minTemperature: Int
-    var maxTemperature: Int
-    var date: Date
-    
-    // Initializer
-    init(id: String = UUID().uuidString, cityName: String, headlineText: String, currentTemperature: Int, minTemperature: Int, maxTemperature: Int, date: Date = Date()) {
+    var cityName: String?
+    var headline: Headline?
+    var dailyForecasts: [DailyForecast]?
+
+    init(id: String = UUID().uuidString, cityName: String?, headline: Headline?, dailyForecasts: [DailyForecast]?) {
         self.id = id
         self.cityName = cityName
-        self.headlineText = headlineText
-        self.currentTemperature = currentTemperature
-        self.minTemperature = minTemperature
-        self.maxTemperature = maxTemperature
-        self.date = date
+        self.headline = headline
+        self.dailyForecasts = dailyForecasts
+    }
+}
+
+@Model
+class Headline: Identifiable {
+    var id: String = UUID().uuidString
+    var text: String?
+    
+    init(text: String?) {
+        self.text = text
+    }
+}
+
+@Model
+class DailyForecast: Identifiable {
+    var id: String = UUID().uuidString
+    var temperature: Temperature?
+    
+    init(temperature: Temperature?) {
+        self.temperature = temperature
+    }
+}
+
+@Model
+class Temperature: Identifiable {
+    var id: String = UUID().uuidString
+    var minimum: TemperatureValue?
+    var maximum: TemperatureValue?
+    
+    init(minimum: TemperatureValue?, maximum: TemperatureValue?) {
+        self.minimum = minimum
+        self.maximum = maximum
+    }
+}
+
+@Model
+class TemperatureValue: Identifiable {
+    var id: String = UUID().uuidString
+    var value: Int?
+    
+    init(value: Int?) {
+        self.value = value
     }
 }

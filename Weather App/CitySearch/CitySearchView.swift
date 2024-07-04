@@ -5,7 +5,6 @@
 //  Created by Nuveda on 25/06/24.
 //
 
-
 import SwiftUI
 
 struct CitySearchView: View {
@@ -18,12 +17,38 @@ struct CitySearchView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                TextField("Enter city name", text: $searchText)
-                    .textFieldStyle(.roundedBorder)
-                    .padding()
-                    .onChange(of: searchText) { newValue in
-                        searchViewModel.searchCities(query: newValue)
+                HStack {
+                    TextField("Enter city name", text: $searchText)
+                        .textFieldStyle(.roundedBorder)
+                        .padding()
+                        .onChange(of: searchText) { newValue in
+                            searchViewModel.searchCities(query: newValue)
+                        }
+                    
+                    Button(action: {
+                        searchViewModel.requestLocationPermission()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            searchViewModel.fetchCityForCurrentLocation()
+                        }
+                    }) {
+                        if searchViewModel.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                        } else {
+                            Image(systemName: "location.circle.fill")
+                                .foregroundColor(.blue)
+                                .font(.title2)
+                        }
                     }
+                    .padding(.trailing)
+                    .disabled(searchViewModel.isLoading)
+                }
+                
+                if let error = searchViewModel.locationError {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding()
+                }
                 
                 List(searchViewModel.searchResults) { result in
                     Button(action: {
@@ -44,6 +69,11 @@ struct CitySearchView: View {
                 .listStyle(.plain)
             }
             .navigationBarTitle("Add City", displayMode: .inline)
+        }
+        .onReceive(searchViewModel.$currentLocationCity) { city in
+            if let city = city {
+                searchText = city
+            }
         }
     }
 }
