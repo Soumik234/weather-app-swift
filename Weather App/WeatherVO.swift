@@ -137,6 +137,79 @@ struct AutocompleteResult: Identifiable, Mappable {
     }
 }
 
+
+struct WeatherLocation: Mappable,Equatable, Identifiable {
+    let id: String = UUID().uuidString
+    static func == (lhs: WeatherLocation, rhs: WeatherLocation) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    var city: String?
+    var country: Country?
+    var timezone: TimeZone?
+    var geoPosition: GeoPosition?
+     init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        city <- map["EnglishName"]
+        country <- map["Country"]
+        timezone <- map["TimeZone"]
+        geoPosition <- map["GeoPosition"]
+    }
+    
+    struct Country: Mappable{
+        var localizedName: String?
+        init?(map: Map) {}
+        mutating func mapping(map: Map) {
+           localizedName <- map["EnglishName"]
+        }
+    }
+    
+    struct TimeZone: Mappable {
+        var code: String?
+        var name: String?
+        
+        init?(map: Map){}
+        
+        mutating func mapping(map:Map){
+          code <- map["Code"]
+            name <- map["Name"]
+        }
+    }
+    struct GeoPosition: Mappable {
+        var latitude: Double?
+        var longitude: Double?
+        var elevation: Elevation?
+        
+        init?(map: Map){}
+        
+        mutating func mapping(map:Map){
+            latitude <- map["Latitude"]
+            longitude <- map["Longitude"]
+            elevation <- map["Elevation"]
+        }
+    }
+    struct Elevation: Mappable {
+        var metric: Metric?
+        
+        init?(map: Map){}
+        
+        mutating func mapping(map:Map){
+            metric <- map ["Metric"]
+        }
+        
+    }
+    
+    struct Metric: Mappable {
+        var value: Int?
+        var unit: String?
+        init?(map: Map){}
+        mutating func mapping(map:Map){
+            value <- map ["Value"]
+            unit <- map ["Unit"]
+        }
+    }
+}
 struct CityInfo {
     let key: String
     let name: String

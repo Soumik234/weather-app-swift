@@ -11,7 +11,7 @@ struct UrlConstants{
     static let dailyURL = forecastURL + "/daily/1day/"
     static let hourlyURL = forecastURL + "/hourly/12hour/"
     static let autocompleteURL = baseURL + "/locations/v1/cities/autocomplete"
-    
+    static let topCitiesURL = baseURL + "/locations/v1/topcities/150"
 }
 
 struct Constants {

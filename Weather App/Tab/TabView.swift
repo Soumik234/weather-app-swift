@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel = LoginViewModel()
     @ObservedObject var vm = ProfileViewModel()
+    @ObservedObject var cityViewModel = CityInfoViewModel()
     func setupNavigationBarAppearance() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -29,11 +30,18 @@ struct ContentView: View {
                     Image(systemName: "cloud.sun")
                     Text("Weather")
                 }
+            
             ProfileView(viewModel: vm)
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")
                 }
+            CityInfoView()
+                .tabItem{
+                    Image(systemName: "book")
+                    Text("CityInfo")
+                }
+            
         }.tint(.blue)
             .onAppear {
                 setupNavigationBarAppearance()

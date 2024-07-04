@@ -10,12 +10,13 @@ import Combine
 import SwiftUI
 import ObjectMapper
 import SwiftyJSON
+import SwiftData
 //swiftyjson
 
 
 class WeatherListViewModel: ObservableObject{
     @Published var weatherList: [WeatherData] = []
-    
+    @Environment(\.modelContext) private var modelContext
     private var cancellable: AnyCancellable?
     private let networkUtility = NetworkUtility()
     
