@@ -131,24 +131,23 @@
 		E95AA3762C297D3600BA5779 /* Weather App */ = {
 			isa = PBXGroup;
 			children = (
+				E96B0F5D2C36CB7F00ADDCB5 /* ApiFetching */,
+				E95AA3772C297D3600BA5779 /* WeatherApp.swift */,
+				E96B0F5C2C36CB3600ADDCB5 /* Constants */,
+				E96B0F5B2C36CB1900ADDCB5 /* DataModel */,
+				E96B0F5A2C36CB0A00ADDCB5 /* Location */,
 				E96B0F592C36C71400ADDCB5 /* Weather-App-Info.plist */,
 				E96B0F502C357D2400ADDCB5 /* CityInfo */,
 				E9DA80C02C3502E9002DD2BC /* Splash */,
 				E91617DC2C32BC4A002ECE26 /* Profile */,
 				E9F866CC2C32A76D006ABCF6 /* Tab */,
-				E95AA3772C297D3600BA5779 /* WeatherApp.swift */,
 				E991BDF42C2A8DE4000143F2 /* CitySearch */,
 				E991BDED2C2A87CF000143F2 /* WeatherDetails */,
 				E95AA3872C29804500BA5779 /* Login */,
 				E95AA38C2C298B6200BA5779 /* WeatherList */,
 				E95AA37B2C297D3600BA5779 /* Item.swift */,
-				E991BDE92C2A7E5D000143F2 /* WeatherVO.swift */,
-				E95AA3912C298CF800BA5779 /* Util.swift */,
 				E95AA37D2C297D3B00BA5779 /* Assets.xcassets */,
-				E95AA3932C298D3C00BA5779 /* NetworkUtility.swift */,
 				E95AA37F2C297D3B00BA5779 /* Preview Content */,
-				E9DEA3D42C35562200CC7D04 /* DataItem.swift */,
-				E96B0F572C36640500ADDCB5 /* CurrentLocation.swift */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -188,6 +187,39 @@
 				E96B0F552C3659B300ADDCB5 /* CityBoxView.swift */,
 			);
 			path = CityInfo;
+			sourceTree = "<group>";
+		};
+		E96B0F5A2C36CB0A00ADDCB5 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				E96B0F572C36640500ADDCB5 /* CurrentLocation.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		E96B0F5B2C36CB1900ADDCB5 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E9DEA3D42C35562200CC7D04 /* DataItem.swift */,
+				E991BDE92C2A7E5D000143F2 /* WeatherVO.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E96B0F5C2C36CB3600ADDCB5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E95AA3912C298CF800BA5779 /* Util.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E96B0F5D2C36CB7F00ADDCB5 /* ApiFetching */ = {
+			isa = PBXGroup;
+			children = (
+				E95AA3932C298D3C00BA5779 /* NetworkUtility.swift */,
+			);
+			path = ApiFetching;
 			sourceTree = "<group>";
 		};
 		E991BDED2C2A87CF000143F2 /* WeatherDetails */ = {
