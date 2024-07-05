@@ -26,7 +26,7 @@ struct WeatherCell: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             
             HStack(spacing: 20) {
-                temperatureView(label: "Current", value:calculateAverageTemperature(), color: .blue)
+                temperatureView(label: "Current", value: calculateAverageTemperature(), color: .blue)
                 Spacer()
                 temperatureView(label: "Min", value: weather.dailyForecasts?.first?.temperature?.minimum?.value, color: .blue)
                 Spacer()
@@ -37,7 +37,7 @@ struct WeatherCell: View {
         .frame(width: 300, height: 200)
         .background(Color(.systemBackground))
         .cornerRadius(10)
-        .shadow( radius: 5, x: 0, y: 0)
+        .shadow(radius: 5, x: 0, y: 0)
     }
     
     private func temperatureView(label: String, value: Int?, color: Color) -> some View {
@@ -51,6 +51,7 @@ struct WeatherCell: View {
                 .foregroundColor(color)
         }
     }
+    
     private func calculateAverageTemperature() -> Int {
         guard let minTemp = weather.dailyForecasts?.first?.temperature?.minimum?.value,
               let maxTemp = weather.dailyForecasts?.first?.temperature?.maximum?.value else {

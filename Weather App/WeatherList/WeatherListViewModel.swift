@@ -10,40 +10,78 @@ import Combine
 import SwiftUI
 import ObjectMapper
 import SwiftyJSON
+import SwiftData
 //swiftyjson
 
 
 class WeatherListViewModel: ObservableObject{
     @Published var weatherList: [WeatherData] = []
-    
-    private var cancellable: AnyCancellable?
-    private let networkUtility = NetworkUtility()
+    @Published var savedCities: [SavedCity] = []
+       
+       private var cancellable: AnyCancellable?
+       private let networkUtility = NetworkUtility()
+    private let modelContainer: ModelContainer
     
     let dailyURL = UrlConstants.dailyURL
-    var locationKeys: [String] = []
-    var cityNames: [String] = []
+ 
 
     let parameters = [
         "apikey": Constants.apiKey,
         "details": "False",
         "metric": "True"
     ]
-    
+    @MainActor private func loadSavedCities() {
+            let descriptor = FetchDescriptor<SavedCity>(sortBy: [SortDescriptor(\.cityName)])
+            do {
+                savedCities = try modelContainer.mainContext.fetch(descriptor)
+                for city in savedCities {
+                    weatherDailyForecast(CityInfo(key: city.locationKey, name: city.cityName))
+                }
+            } catch {
+                print("Failed to fetch SavedCities: \(error)")
+            }
+        }
+    init() {
+            do {
+                modelContainer = try ModelContainer(for: SavedCity.self)
+                loadSavedCities()
+            } catch {
+                fatalError("Failed to create ModelContainer for SavedCity: \(error)")
+            }
+        }
+        
     func createEmptyAutocompleteResult() -> AutocompleteResult {
         let emptyMap = Map(mappingType: .fromJSON, JSON: [:])
         return AutocompleteResult(map: emptyMap)!
     }
-    
-    func addCity(key: String, name: String) {
-        let cityInfo = CityInfo(key: key, name: name)
-        locationKeys.append(cityInfo.key)
-        cityNames.append(cityInfo.name)
-        weatherDailyForecast(cityInfo)
-    }
-    
-    func deleteItems(at offsets: IndexSet) {
-        weatherList.remove(atOffsets: offsets)
-    }
+  
+        
+    @MainActor func addCity(key: String, name: String) {
+            let newCity = SavedCity(locationKey: key, cityName: name)
+            modelContainer.mainContext.insert(newCity)
+            savedCities.append(newCity)
+            do {
+                try modelContainer.mainContext.save()
+            } catch {
+                print("Failed to save new city: \(error)")
+            }
+            weatherDailyForecast(CityInfo(key: key, name: name))
+        }
+        
+    @MainActor func deleteItems(at offsets: IndexSet) {
+            for index in offsets {
+                let cityToDelete = savedCities[index]
+                modelContainer.mainContext.delete(cityToDelete)
+            }
+            savedCities.remove(atOffsets: offsets)
+            weatherList.remove(atOffsets: offsets)
+            do {
+                try modelContainer.mainContext.save()
+            } catch {
+                print("Failed to save after deleting cities: \(error)")
+            }
+        }
+        
     func weatherDailyForecast(_ cityInfo: CityInfo){
         let url = dailyURL + cityInfo.key
         print(url)
